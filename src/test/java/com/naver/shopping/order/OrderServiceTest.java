@@ -1,17 +1,20 @@
 package com.naver.shopping.order;
 
 import com.naver.shopping.AppConfig;
+import com.naver.shopping.OrderApp;
 import com.naver.shopping.member.Grade;
 import com.naver.shopping.member.Member;
 import com.naver.shopping.member.MemberService;
 import com.naver.shopping.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderServiceTest {
-    AppConfig appConfig = new AppConfig();
-    MemberService memberService = appConfig.memberService();
-    OrderService orderService = appConfig.orderService();
+    ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+    MemberService memberService = ac.getBean("memberService", MemberService.class);
+    OrderService orderService = ac.getBean("orderService", OrderService.class);
 
     @Test
     void 주문하기_고정할인() {

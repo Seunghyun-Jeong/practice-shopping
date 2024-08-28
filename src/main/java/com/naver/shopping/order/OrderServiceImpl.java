@@ -1,18 +1,21 @@
 package com.naver.shopping.order;
 
 import com.naver.shopping.discount.DiscountPolicy;
-import com.naver.shopping.discount.RateDiscountPolicy;
 import com.naver.shopping.member.Member;
 import com.naver.shopping.member.MemberRepository;
-import com.naver.shopping.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
-    private MemberRepository memberRepository;
-    private DiscountPolicy discountPolicy;
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("subDiscountPolicy") DiscountPolicy rateDiscountPolicy) {
         this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
+        this.discountPolicy = rateDiscountPolicy;
     }
 
     @Override

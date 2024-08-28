@@ -2,7 +2,10 @@ package com.naver.shopping.discount;
 
 import com.naver.shopping.member.Grade;
 import com.naver.shopping.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
+@SubDiscountPolicy
 public class FixDiscountPolicy implements DiscountPolicy {
     private int discountFixAmount = 1000;
 

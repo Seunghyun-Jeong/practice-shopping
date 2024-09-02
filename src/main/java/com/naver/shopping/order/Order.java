@@ -1,5 +1,8 @@
 package com.naver.shopping.order;
 
+import lombok.Getter;
+
+@Getter
 public class Order {
     private Long memberId;
     private String itemName;
@@ -20,21 +23,5 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" + "memberId=" + memberId + ", itemName='" + itemName + '\'' + ", itemPrice=" + itemPrice + ", discountPrice=" + discountPrice + '}';
-    }
-
-    public Long getMemberId() {
-        return memberId;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public int getItemPrice() {
-        return itemPrice;
-    }
-
-    public int getDiscountPrice() {
-        return discountPrice;
     }
 }
